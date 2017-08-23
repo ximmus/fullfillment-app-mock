@@ -1,0 +1,16 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"name": "Fulfillment App Mock",
+			"file_exclude_patterns": [
+				"*.sublime-project",
+				"*.sublime-workspace",
+				".gitignore",
+				".gitattributes",
+				"prepros-6.config"
+			]
+		}
+	]
+}
