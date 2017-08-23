@@ -17,50 +17,26 @@
     <body>
       <header role="navigation" class="navbar navbar-light bg-primary fixed-top">
         <div class="container">
-                  <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="#">
           <img src="/img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="home">
         </a>
-        <header class="text-uppercase font-weight-bold text-white navbar-text">Header</header>
+        <header data-bind="" class="text-uppercase font-weight-bold text-white navbar-text">Header</header>
         <img src="/img/sbe.png" width="30" height="30" class="d-inline-block align-top" alt="home">
         </div>
       </header>
       
       <br><!-- temp fix for colapsed margin between header and content also need to make header sticky -->
       
+      <!-- Generate buttons for the pages -->
       <main class="container-fluid" data-bind="foreach: pages">
-      <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-        <img data-bind = "attr: { src: imgSrc}" width="100" height="100" class="d-inline-block align-top" alt="home">
-        <h1 data-bind="text: page"></h1>
-      </button>
-      </main>
-      <!-- <main class="container-fluid" data-bind="foreach: pages">
-        
-        <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-          <img data-bind = "attr: { src: courseUrl}" width="100" height="100" class="d-inline-block align-top" alt="home">
-          <h1 data-bind="text: $data"></h1>
+        <button 
+          type="button" 
+          class="btn btn-outline-primary btn-lg btn-block" 
+          data-bind="attr: { id: pageId }, click: $root.returnId">
+          <img data-bind = "attr: { src: imgSrc}" width="100" height="100" class="d-inline-block align-top" alt="home">
+          <h1 data-bind="text: page"></h1>
         </button>
-
-                <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-            <img src="/img/transfer.svg" width="100" height="100" class="d-inline-block align-top" alt="home">
-            <h1>Transfer</h1>
-          </button>
-          <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-            <img src="/img/start-work.svg" width="100" height="100" class="d-inline-block align-top" alt="home">
-            <h1>Start Work</h1>
-          </button>
-          <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-            <img src="/img/inventory-levels.svg" width="100" height="100" class="d-inline-block align-top" alt="home">
-            <h1>Inventory Levels</h1>
-          </button>
-          <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-            <img src="/img/damaged-goods.svg" width="100" height="100" class="d-inline-block align-top" alt="home">
-            <h1>Damaged Goods</h1>
-          </button>
-          <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-            <img src="/img/will-call.svg" width="100" height="100" class="d-inline-block align-top" alt="home">
-            <h1>Will Call</h1>
-          </button>
-
-      </main> -->
+      </main>
+    
     </body>
 </html>
