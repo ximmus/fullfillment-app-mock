@@ -11,14 +11,38 @@ function AppViewModel() {
 		{ imgSrc: '/img/will-call.svg',        page: 'Will Call',        pageId: 'will-call'}
 	]);
 
-	var pageHeader = {
-    	header: 'Bob'
+	self.chosenPageId = ko.observable();
+	self.chosenPageData = ko.observable();
+
+	 // self.goToPage = function(page) { 
+	 // 	// Grabs the object of the clicked
+	 // 	self.chosenPageId(page);
+	 	
+	 // 	console.log(page); 
+	 // };
+	var newHeader = "Inventory App";
+	self.header = newHeader;
+	
+	self.updateHeader = function(page) { 
+	 	// Grabs the object of the clicked
+	 	self.chosenPageId(page);
+	 	
+	 	// Assign the page title to header
+		//self.header = "New Header";
+		
+		
+		console.log(page); 
 	};
 
-	self.returnId = function(page){
-		self.pages(page);
-		console.log(page.page);
-	}
+
+	// self.returnId = function(page, header){
+		
+	// 	self.pages(page);
+
+	// 	//self.header = page.page;
+
+	// 	console.log(header);
+	// }
 
 };
 
