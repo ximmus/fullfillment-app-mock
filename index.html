@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Fulfilment App Mock</title>
+        <title>Fulfilment Mockup</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -15,27 +15,23 @@
         <script src="js/main.js" defer></script>
     </head>
     <body>
-      <header role="navigation" class="navbar navbar-light bg-primary fixed-top">
-        <div class="container">
-          <span data-bind="text: header" class="h1 text-white" class="navbar-brand mb-0">
-            <img src="/img/home.svg" width="40" height="40" class="d-inline-block align-top" id="home-button" alt="home">
-            Header
-          </span>
-        </div>
-      </header>
-      
-      <br><!-- temp fix for colapsed margin between header and content also need to make header sticky -->
-      
-      <!-- Generate buttons for the pages -->
-      <main class="container-fluid" data-bind="foreach: pages">
-        <button 
-          type="button" 
-          class="btn btn-outline-primary btn-lg btn-block" 
-          data-bind="attr: { id: pageId }, click: $root.updateHeader">
-          <img data-bind = "attr: { src: imgSrc}" width="100" height="100" class="d-inline-block align-top" alt="home">
-          <h1 data-bind="text: page"></h1>
-        </button>
-      </main>
-    
+        <header role="navigation" class="navbar navbar-light bg-primary fixed-top" data-bind="text: header">
+          <div class="container">
+
+            <img src="img/home.svg" width="40" height="40" class="d-inline-block align-top" id="home-button" alt="home" data-bind="click: showAllButtons">
+          </div>        
+        </header>
+        <button data-bind="click: showAllButtons">HOME</button>
+        <nav data-bind="foreach: screens">
+          <button class="btn btn-outline-primary btn-lg btn-block" data-bind="attr: { id: pageId }, text: title, visible: $root.showButton, click: $root.buttonClicked">
+            <img data-bind = "attr: { src: imgSrc}" width="100" height="100" class="d-inline-block align-top" alt="home">
+          </button>
+        </nav>
+        
+        <main class="container-fluid" data-bind="foreach: screens">
+          <section data-bind="attr: { id: pageId }, if: $root.current() == $element.id">
+            <h1 data-bind="text: title"></h1>
+          </section>
+        </main>
     </body>
 </html>

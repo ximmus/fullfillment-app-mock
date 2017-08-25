@@ -1,50 +1,66 @@
-function AppViewModel() {
+function App() {
+    
+    // Check yo self
+    var self = this;
+    
+    // Home button and header constant elements, currently selected screen
+    self.home = ko.observable('Home');
+    self.header = ko.observable('Header');
+    self.current = ko.observable('home');
 
-	// Protect 'this' from being hijacked
-	var self = this;
+    // Show and hide buttons
+    self.showButton = ko.observable(true); // Visable by default
 
-	self.pages = ko.observableArray([
-		{ imgSrc: '/img/transfer.svg',         page: 'Transfer',         pageId: 'transfer'},
-		{ imgSrc: '/img/start-work.svg',       page: 'Start Work',       pageId: 'start-work'},
-		{ imgSrc: '/img/inventory-levels.svg', page: 'Inventory Levels', pageId: 'inventory-levels'},
-		{ imgSrc: '/img/damaged-goods.svg',    page: 'Damaged Goods',    pageId: 'damaged-goods'},
-		{ imgSrc: '/img/will-call.svg',        page: 'Will Call',        pageId: 'will-call'}
-	]);
+    // These will be created with a for each loop
+    self.buttonOne = ko.observable('Button One');
+    self.buttonTwo = ko.observable('Button Two');
 
-	self.chosenPageId = ko.observable();
-	self.chosenPageData = ko.observable();
+    self.screens = ko.observableArray([
+        { imgSrc: '/img/transfer.svg',         title: 'Transfer',         pageId: 'transfer' },
+        { imgSrc: '/img/start-work.svg',       title: 'Start Work',       pageId: 'start-work'},
+        { imgSrc: '/img/inventory-levels.svg', title: 'Inventory Levels', pageId: 'inventory-levels'},
+        { imgSrc: '/img/damaged-goods.svg',    title: 'Damaged Goods',    pageId: 'damaged-goods'},
+        { imgSrc: '/img/will-call.svg',        title: 'Will Call',        pageId: 'will-call'}
+    ]);
 
-	 // self.goToPage = function(page) { 
-	 // 	// Grabs the object of the clicked
-	 // 	self.chosenPageId(page);
-	 	
-	 // 	console.log(page); 
-	 // };
-	var newHeader = "Inventory App";
-	self.header = newHeader;
-	
-	self.updateHeader = function(page) { 
-	 	// Grabs the object of the clicked
-	 	self.chosenPageId(page);
-	 	
-	 	// Assign the page title to header
-		//self.header = "New Header";
-		
-		
-		console.log(page); 
-	};
+    // This observable array of screen one
+    self.screenOne = ko.observableArray([
+        { name: "Screen One" }
+    ]); 
+
+    // // This observable array of screen two
+    self.screenTwo = ko.observableArray([
+        { name: "Screen Two" }
+    ]);
 
 
-	// self.returnId = function(page, header){
-		
-	// 	self.pages(page);
 
-	// 	//self.header = page.page;
+    // Helper function to get ID of the selected button
+    self.getSelectedId = function(data, event){
+    	var selectedID = event.target.id;
+        self.current(selectedID); // Set current 
+    	self.header(selectedID); // Set Header        
+    }
 
-	// 	console.log(header);
-	// }
+    // Action when button is clicked
+    self.buttonClicked = function(data, event){
+    	self.showButton(false);
+    	self.getSelectedId(data, event);
 
-};
+        // use this to pull in current page
+        console.log(self.current());
+    }
 
-var vm = new AppViewModel();
-ko.applyBindings(vm);
+    // Reset App UI to start
+    self.showAllButtons = function(){
+    	// show hidden buttons
+    	self.showButton(true);
+    	// Hide all screens
+    	self.current("home");
+    	// Set Header back to default
+    	self.header("Header");
+    }
+
+}
+
+ko.applyBindings(new App());
