@@ -15,23 +15,25 @@
         <script src="js/main.js" defer></script>
     </head>
     <body>
-        <header role="navigation" class="navbar navbar-light bg-primary fixed-top" data-bind="text: header">
-          <div class="container">
-
-            <img src="img/home.svg" width="40" height="40" class="d-inline-block align-top" id="home-button" alt="home" data-bind="click: showAllButtons">
-          </div>        
-        </header>
-        <button data-bind="click: showAllButtons">HOME</button>
-        <nav data-bind="foreach: screens">
-          <button class="btn btn-outline-primary btn-lg btn-block" data-bind="attr: { id: pageId }, text: title, visible: $root.showButton, click: $root.buttonClicked">
-            <img data-bind = "attr: { src: imgSrc}" width="100" height="100" class="d-inline-block align-top" alt="home">
+      <nav class="navbar navbar-light bg-primary fixed-top" data-bind="click: showAllButtons">
+        <a class="navbar-brand" href="#">
+          <img src="img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+          <span class="text-white" data-bind="text: header"></span>
+        </a>
+      </nav>
+        <br> <!-- weird margin colapse -->
+        <div data-bind="foreach: screens">
+          <button class="btn btn-outline-primary btn-lg btn-block" data-bind="attr: { id: pageId }, visible: $root.showButton, click: $root.buttonClicked">
+            <img src="img/transfer.svg" data-bind = "attr: { src: imgSrc }" width="100" height="100" class="d-inline-block align-top">
+            <p data-bind="text: title"></p>
           </button>
-        </nav>
+        </div>
         
         <main class="container-fluid" data-bind="foreach: screens">
           <section data-bind="attr: { id: pageId }, if: $root.current() == $element.id">
             <h1 data-bind="text: title"></h1>
           </section>
         </main>
+
     </body>
 </html>

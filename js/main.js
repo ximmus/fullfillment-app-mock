@@ -5,7 +5,7 @@ function App() {
     
     // Home button and header constant elements, currently selected screen
     self.home = ko.observable('Home');
-    self.header = ko.observable('Header');
+    self.header = ko.observable('Inventory App');
     self.current = ko.observable('home');
 
     // Show and hide buttons
@@ -22,18 +22,6 @@ function App() {
         { imgSrc: '/img/damaged-goods.svg',    title: 'Damaged Goods',    pageId: 'damaged-goods'},
         { imgSrc: '/img/will-call.svg',        title: 'Will Call',        pageId: 'will-call'}
     ]);
-
-    // This observable array of screen one
-    self.screenOne = ko.observableArray([
-        { name: "Screen One" }
-    ]); 
-
-    // // This observable array of screen two
-    self.screenTwo = ko.observableArray([
-        { name: "Screen Two" }
-    ]);
-
-
 
     // Helper function to get ID of the selected button
     self.getSelectedId = function(data, event){
@@ -58,7 +46,7 @@ function App() {
     	// Hide all screens
     	self.current("home");
     	// Set Header back to default
-    	self.header("Header");
+    	self.header("Inventory App");
     }
 
 }
