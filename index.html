@@ -17,8 +17,8 @@
     <body>
       <nav class="navbar navbar-light bg-primary fixed-top" data-bind="click: showAllButtons">
         <a class="navbar-brand" href="#">
-          <img src="img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-          <span class="text-white" data-bind="text: header"></span>
+          <!-- <img src="img/home.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+          <h1 class="text-white" data-bind="text: header"></h1>
         </a>
       </nav>
         <br> <!-- weird margin colapse -->
@@ -31,7 +31,7 @@
         
         <main class="container-fluid" data-bind="foreach: screens">
           <section data-bind="attr: { id: pageId }, if: $root.current() == $element.id">
-            <h1 data-bind="text: title"></h1>
+            <h2 data-bind="text: title"></h2>
           </section>
         </main>
 
