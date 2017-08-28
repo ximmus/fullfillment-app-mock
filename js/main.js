@@ -25,7 +25,12 @@ function App() {
         var screens = self.screens();
         
         // Set current
-        self.current(selectedID);  
+        self.current(selectedID);
+
+        // AJAX the content of the selected screen
+        $.ajax( {url: "/screens/" + self.current() + ".html", success: function(result) {
+            $("#" + self.current() + "-content").html(result);
+        }});
     	
         // Pull in current page array idex
         for (var i = screens.length - 1; i >= 0; i--) {
