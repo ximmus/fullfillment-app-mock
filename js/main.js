@@ -26,17 +26,27 @@ function App() {
     // Helper function to get ID of the selected button
     self.getSelectedId = function(data, event){
     	var selectedID = event.target.id;
-        self.current(selectedID); // Set current 
-    	self.header(selectedID); // Set Header        
+        var screens = self.screens();
+        
+        // Set current
+        self.current(selectedID);  
+    	
+        // Pull in current page array idex
+        for (var i = screens.length - 1; i >= 0; i--) {
+            
+            if(screens[i].pageId == self.current()){
+               self.header(screens[i].title); 
+            }
+        }        
     }
 
     // Action when button is clicked
     self.buttonClicked = function(data, event){
-    	self.showButton(false);
-    	self.getSelectedId(data, event);
+    	// Hide all buttons
+        self.showButton(false);
 
-        // use this to pull in current page
-        console.log(self.current());
+        // Display current selection
+    	self.getSelectedId(data, event);
     }
 
     // Reset App UI to start
